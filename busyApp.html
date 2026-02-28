@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="busyApp.css">
+<title>Caesar's Business Empire</title>
+
+</head>
+<body>
+<div class="container">
+  <!-- Login view is shown when not logged in -->
+  <div id="loginScreen" class="card login-container" role="region" aria-label="Login area">
+    <div class="brand"><div class="logo" id="brandLogo">🛒</div><div>
+      <div class="h1" id="brandName">CAESAR'S SUPERMART SHOP</div>
+      <div class="lead">Sales • Inventory • Invoices • Reports</div>
+    </div></div>
+
+    <p class="small-muted">Demo accounts: <strong>admin/admin</strong> or <strong>cashier/cashier</strong>. You can change any user's password in Settings after login.</p>
+
+    <div class="input-row"><label>Username</label><input id="username" class="input" type="text" autocomplete="username" placeholder="admin"></div>
+    <div class="input-row"><label>Password</label><input id="password" class="input" type="password" autocomplete="current-password" placeholder="password"></div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <label style="display:flex;gap:8px;align-items:center"><input id="remember" type="checkbox" /> <span class="small-muted">Save Login</span></label>
+      <div id="datetime" class="small-muted"></div>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button id="btnLogin" class="btn">Sign in</button>
+      <button id="btnDemoFill" class="btn ghost">Fill demo</button>
+    </div>
+
+    <div id="error" class="error" style="display:none" role="alert"></div>
+    <div style="margin-top:12px;font-size:12px;color:var(--muted)">By continuing you agree to the shop policies. Use demo accounts only.</div>
+  </div>
+
+  <!-- App (hidden until login) -->
+  <div id="app" style="display:none" class="app" role="application" aria-hidden="true">
+    <aside class="sidebar card" aria-label="navigation">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button class="nav-btn" id="navDashboard">📊 Dashboard</button>
+        <button class="nav-btn" id="navStock">📦 Stock Manager</button>
+        <button class="nav-btn" id="navPOS">💳 POS</button>
+        <button class="nav-btn" id="navReports">📑 Reports</button>
+        <button class="nav-btn" id="navInvoices">🧾 Invoices</button>
+        <button class="nav-btn" id="navSettings">⚙️ Settings</button>
+        <div class="small-muted" style="margin-top:8px">Utilities</div>
+        <button class="nav-btn" id="navImport">⬆️ Import CSV</button>
+        <button class="nav-btn" id="navExport">⬇️ Export CSV</button>
+        <div class="small-muted">Signed in as <strong id="userNameSmall"></strong></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button id="signOut" class="btn ghost" style="flex:1">Sign out</button>
+          <button id="lockBtn" class="btn" title="Lock (return to login)">Lock</button>
+        </div>
+      </div>
+      <div style="margin-top:14px" class="small-muted">Pro tips: use Import CSV to bulk-upload stock, export to backup data.</div>
+    </aside>
+
+    <main style="padding:8px" id="mainContent">
+      <!-- Dynamic content injected here -->
+    </main>
+  </div>
+</div>
+
+<!-- Hidden file inputs for CSV import -->
+<input id="csvStockFile" class="file-input" type="file" accept=".csv,text/csv">
+<input id="csvPosFile" class="file-input" type="file" accept=".csv,text/csv">
+<input id="csvInvoicesFile" class="file-input" accept=".csv,text/csv">
+
+<script src="busyApp.js"></script>
+</body>
+</html>
